@@ -1,0 +1,22 @@
+{
+    # Enable FrankenPHP
+    frankenphp
+
+    # Disable automatic HTTPS for local development
+    # Remove this line for production to enable automatic Let's Encrypt certificates
+    auto_https off
+
+    # Set global options
+    order php_server before file_server
+}
+
+:80 {
+    # Set the document root to Laravel's public directory
+    root * /app/public
+
+    # Enable Gzip and Brotli compression
+    encode zstd br gzip
+
+    # Handle PHP requests through FrankenPHP
+    php_server
+}
