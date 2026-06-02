@@ -1,0 +1,35 @@
+name: Laravel CI
+
+on:
+  pull_request:
+    branches:
+    - staging
+    - develop
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+
+      - name: Install Dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Copy Environment
+        run: cp .env.example .env
+
+      - name: Generate App Key
+        run: php artisan key:generate
+
+      - name: Run Pint
+        run: ./vendor/bin/pint --test
+
+      - name: Run PHPUnit
+        run: php artisan test
+
