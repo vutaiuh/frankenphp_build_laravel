@@ -47,7 +47,5 @@ storage/logs/*
 bootstrap/cache/*
 .phpunit.result.cache
 phpunit.xml
-README.md
-*.md
 !docker/php/Caddyfile
 !docker/php/php.ini
