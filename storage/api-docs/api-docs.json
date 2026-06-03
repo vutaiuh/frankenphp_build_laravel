@@ -1,0 +1,70 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "API Description",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/api/sales-coach/analyze": {
+            "post": {
+                "tags": [
+                    "Sales Coach"
+                ],
+                "summary": "Analyze sales transcript",
+                "operationId": "0fb428f90fd09b21b9ec682fcee33624",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "transcript"
+                                ],
+                                "properties": {
+                                    "transcript": {
+                                        "type": "string",
+                                        "example": "Hello, I would like to buy..."
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Analysis result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Sales Coach",
+            "description": "Sales Coach"
+        }
+    ]
+}
