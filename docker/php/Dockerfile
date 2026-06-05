@@ -1,4 +1,6 @@
 FROM dunglas/frankenphp:php8.4-alpine
+# Install Node.js + npm
+RUN apk add --no-cache nodejs npm
 
 # Install PHP extensions using the built-in installer
 # This is much simpler than the manual compile process in the PHP-FPM setup
@@ -26,6 +28,9 @@ COPY . .
 
 # Install PHP dependencies
 RUN composer install --optimize-autoloader --no-dev
+
+#Install npm
+RUN npm install && npm run build
 
 # Create required Laravel directories
 RUN mkdir -p storage/logs \

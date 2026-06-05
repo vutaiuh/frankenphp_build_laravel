@@ -16,3 +16,7 @@ Route::get('/docker-test', function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::livewire('/posts', 'pages.posts-index');
+Route::livewire('/posts/create', 'pages.posts-create');
+Route::livewire('/posts/{id}/edit', 'pages.posts-edit');
