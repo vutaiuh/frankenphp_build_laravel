@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -16,3 +17,4 @@ Route::get('/docker-test', function () {
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('posts', PostController::class);
